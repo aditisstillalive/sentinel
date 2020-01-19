@@ -13,14 +13,18 @@
 
 <body>
     <form>
-        Tes dulu woi~<br>
-        <input id="test1" on type="text">
+        Append one numeric data to chart
+        <br>
+        <input id="test1" placeholder="input number here">
         <input id="button1" type="button" value="Add data" onclick="addData(myChart, 'label', getElementById('test1').value)">
-        <!--button id='button1' value="Add data" onclick="addData(myChart, 'label', getElementById('test1').value)">Add data</!--button-->
     </form>
 </body>
 
 <canvas id="myChart" width="400" height="150"></canvas>
+Remove one data from chart
+<br>
+<input id="button2" type="button" value="Remove data" onclick="removeData(myChart)">
+
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 var myChart = new Chart(ctx, {
@@ -28,7 +32,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: [],
         datasets: [{
-            label: '# of Votes',
+            label: '# Charts',
             data: [],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -75,13 +79,5 @@ function removeData(chart) {
     });
     chart.update();
 }
-
-var input = document.getElementById('test1');
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   //event.preventDefault();
-   document.getElementById("button1").click();
-  }
-});
 
 </script>
