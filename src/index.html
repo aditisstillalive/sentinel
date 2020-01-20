@@ -15,8 +15,9 @@
     <form>
         Append one numeric data to chart
         <br>
+        <var id='counter' style='display:none'></var>
         <input id="test1" placeholder="input number here">
-        <input id="button1" type="button" value="Add data" onclick="addData(myChart, 'label', getElementById('test1').value)">
+        <input id="button1" type="button" value="Add data" onclick="addData(myChart, 'data ', getElementById('test1').value)">
     </form>
 </body>
 
@@ -27,6 +28,7 @@ Remove one data from chart
 
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
+var count = 0;
 var myChart = new Chart(ctx, {
     type: 'line',
     data: {
@@ -65,11 +67,13 @@ var myChart = new Chart(ctx, {
 });
 
 function addData(chart, label, data) {
-    chart.data.labels.push(label);
+    var i = count;
+    chart.data.labels.push(label + i);
     chart.data.datasets.forEach((dataset) => {
         dataset.data.push(data);
     });
     chart.update();
+    count = i + 1;
 }
 
 function removeData(chart) {
@@ -79,5 +83,4 @@ function removeData(chart) {
     });
     chart.update();
 }
-
 </script>
