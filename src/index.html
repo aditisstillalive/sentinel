@@ -67,13 +67,18 @@ var myChart = new Chart(ctx, {
 });
 
 function addData(chart, label, data) {
-    var i = count;
-    chart.data.labels.push(label + i);
-    chart.data.datasets.forEach((dataset) => {
+    if ( isNaN(data) ) {
+        alert('Invalid input, please use only number');
+    }
+    else {
+        var i = count;
+        chart.data.labels.push(label + i);
+        chart.data.datasets.forEach((dataset) => {
         dataset.data.push(data);
     });
     chart.update();
     count = i + 1;
+    }
 }
 
 function removeData(chart) {
