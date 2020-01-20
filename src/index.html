@@ -77,10 +77,12 @@ function addData(chart, label, data) {
 }
 
 function removeData(chart) {
+    var j = count;
     chart.data.labels.pop();
     chart.data.datasets.forEach((dataset) => {
         dataset.data.pop();
     });
     chart.update();
+    count = j - 1;
 }
 </script>
